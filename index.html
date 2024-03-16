@@ -8,11 +8,11 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="bg-gunmetal">
-	<div class="flex sm:flex-row flex-col">
-		<div class="text-tea px-10">
+<body class="bg-tea xl:flex xl:flex-row">
+	<div class="flex flex-col sm:flex-row sm:justify-center xl:justify-start bg-gunmetal">
+		<div class="xl:flex-row justify-center text-tea px-10">
 			<img src="https://avatars.githubusercontent.com/u/58148956?v=4" class="pt-10" />
-			<h1 class="text-3xl">Kacper Soczko</h1>
+			<h1 class="text-3xl md:text-4xl">Kacper Soczko</h1>
 			<div>@Kompocik_</div>
 
 			<div>
@@ -22,7 +22,7 @@
 						<path
 							d="M16.001 5c-4.216 0-7.714 3.418-7.634 7.634.029 1.578.719 2.824 1.351 4.024.242.461 6.264 10.332 6.264 10.332V27l.001-.007.002.007v-.01l6.531-10.377c.407-.703.793-1.771.793-1.771A7.631 7.631 0 0 0 16.001 5zM16 16.019a3.895 3.895 0 0 1-3.896-3.897A3.898 3.898 0 1 1 16 16.019z" />
 					</svg>
-					<div class="r">Wrocław, Poland</div>
+					<div class="self-center">Wrocław, Poland</div>
 				</div>
 				<div class="flex">
 					<svg fill="#C7EFCF" width="35px" height="35px" viewBox="0 0 32 32"
@@ -30,10 +30,10 @@
 						<path
 							d="M16 15.503A5.041 5.041 0 1 0 16 5.42a5.041 5.041 0 0 0 0 10.083zm0 2.215c-6.703 0-11 3.699-11 5.5v3.363h22v-3.363c0-2.178-4.068-5.5-11-5.5z" />
 					</svg>
-					<div class="items-center">Available for hire</div>
+					<div class="self-center">Available for hire</div>
 				</div>
 			</div>
-			<div class="flex justify-evenly gap-3 pt-3">
+			<div class="flex justify-evenly gap-3 pt-3 pb-3">
 				<a href="https://github.com/KompocikDot">
 					<svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
 						xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@
 				</div>
 				<div>
 					<a href="mailto:kacper.soczko@gmail.com">
-						<svg width="35px" height="35px" viewBox="0 0 24 24" fill="none"
+						<svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
 							xmlns="http://www.w3.org/2000/svg">
 							<path d="M10 19H6.2C5.0799 19 4.51984 19 4.09202 18.782C3.71569 18.5903 3.40973 18.2843 3.21799 17.908C3 17.4802 3 16.9201 3 15.8V8.2C3 7.0799 3 6.51984 3.21799 6.09202C3.40973 5.71569 3.71569 5.40973 4.09202 5.21799C4.51984 5 5.0799 5 6.2 5H17.8C18.9201 5 19.4802 5 19.908 5.21799C20.2843 5.40973 20.5903 5.71569 20.782 6.09202C21 6.51984 21 7.0799 21 8.2V10M20.6067 8.26229L15.5499 11.6335C14.2669 12.4888 13.6254 12.9165 12.932 13.0827C12.3192 13.2295 11.6804 13.2295 11.0677 13.0827C10.3743 12.9165 9.73279 12.4888 8.44975 11.6335L3.14746 8.09863M14 21L16.025 20.595C16.2015 20.5597 16.2898 20.542 16.3721 20.5097C16.4452 20.4811 16.5147 20.4439 16.579 20.399C16.6516 20.3484 16.7152 20.2848 16.8426 20.1574L21 16C21.5523 15.4477 21.5523 14.5523 21 14C20.4477 13.4477 19.5523 13.4477 19 14L14.8426 18.1574C14.7152 18.2848 14.6516 18.3484 14.601 18.421C14.5561 18.4853 14.5189 18.5548 14.4903 18.6279C14.458 18.7102 14.4403 18.7985 14.405 18.975L14 21Z"
 								stroke="#C7EFCF" stroke-width="2" stroke-linecap="round"
@@ -71,69 +71,115 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex-stretch mt-5 p-3 gap-3 bg-tea text-gunmetal">
-		<div class="text-2xl underline decoration-2 decoration-dashed font-bold text-deep-pink mb-5">
-			Projects
-		</div>
-		<div>
-			<a href="https://isocapi.com/">
-				<div>
-					<div class="flex bg-deep-pink justify-between px-1">
-						<div>ISOCAPI</div>
-						<div>Go, Vue</div>
+	<div>
+		<div
+			class="xl:w-full xl:mt-0 xl:pt-10 xl:px-20 flex-stretch mt-5 p-3 gap-3 bg-tea text-gunmetal md:px-10">
+			<div
+				class="text-2xl md:text-4xl underline decoration-2 decoration-dashed font-bold text-deep-pink mb-5 sm:decoration-2">
+				Projects
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
+				<div class="flex flex-col gap-y-2">
+					<div class="mt-2 xl:mt-0">
+						<a href="https://github.com/KompocikDot/workifier">
+							<div>
+								<div class="flex bg-deep-pink justify-between px-1">
+									<div>WORKIFIER</div>
+									<div>Python</div>
+								</div>
+								<div
+									class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink py-1.5 px-1">
+									Program that tracks popular job listing websites
+									in the
+									IT
+									industry, filters them and notifies about new
+									offers
+									through the
+									Discord service.
+								</div>
+							</div>
+						</a>
 					</div>
-					<div
-						class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink">
-						Scrapers API with multiple SDKs</div>
+
+					<div class="mt-2 xl:mt-1">
+						<a href="https://github.com/KompocikDot/crypt-stat">
+							<div>
+								<div class="flex bg-deep-pink justify-between px-1">
+									<div>CRYPT-STAT</div>
+									<div>Python</div>
+								</div>
+								<div
+									class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink py-1.5 px-1">
+									Simple webapp with worker which stores
+									cryptocurrencies
+									prices and creates diagrams
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="mt-2 xl:mt-1">
+						<a href="https://github.com/KompocikDot/voronoi-diagram">
+							<div>
+								<div class="flex bg-deep-pink justify-between px-1">
+									<div>VORONOI DIAGRAM GENERATOR</div>
+									<div>Go</div>
+								</div>
+								<div
+									class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink py-1.5 px-1">
+									Program generating voronoi diagrams in form of a
+									PNG
+									file
+								</div>
+							</div>
+						</a>
+					</div>
+
 				</div>
-			</a>
-		</div>
-		<div class="mt-4">
-			<a href="https://github.com/KompocikDot/vitkac-pid-scraper">
-				<div>
-					<div class="flex bg-deep-pink justify-between px-1">
-						<div>VITKAC PID SCRAPER</div>
-						<div>Python</div>
+				<div class="flex flex-col gap-y-2">
+					<div class="mt-2 xl:mt-0">
+						<a href="https://isocapi.com/">
+							<div>
+								<div class="flex bg-deep-pink justify-between px-1">
+									<div>ISOCAPI</div>
+									<div>Go, Vue</div>
+								</div>
+								<div
+									class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink py-1.5 px-1">
+									Developer friendly scrapers API with multiple
+									SDKs</div>
+							</div>
+						</a>
 					</div>
-					<div
-						class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink">
-						Scraper utilizing an unofficial API of Vitkac store which searches for
-						new products and sends Discords notifications
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="mt-4">
-			<a href="https://github.com/KompocikDot/workifier">
-				<div>
-					<div class="flex bg-deep-pink justify-between px-1">
-						<div>WORKIFIER</div>
-						<div>Python</div>
-					</div>
-					<div
-						class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink">
-						Program that tracks popular job listing websites in the IT
-						industry, filters them and notifies about new offers through the
-						Discord service.
-					</div>
-				</div>
-			</a>
-		</div>
-		<div class="mt-4">
-			<a href="https://github.com/KompocikDot/crypt-stat">
-				<div>
-					<div class="flex bg-deep-pink justify-between px-1">
-						<div>CRYPT-STAT</div>
-						<div>Python</div>
-					</div>
-					<div
-						class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink">
-						Simple webapp with worker which stores
-						cryptocurrencies
-						prices and creates diagrams
+					<div class="mt-2 xl:mt-1">
+						<a href="https://github.com/KompocikDot/vitkac-pid-scraper">
+							<div>
+								<div class="flex bg-deep-pink justify-between px-1">
+									<div>VITKAC PID SCRAPER</div>
+									<div>Python</div>
+								</div>
+								<div
+									class="border-dashed rounded-sm border-offset-2 border-2 border-t-0 border-deep-pink py-1.5 px-1">
+									Scraper utilizing an unofficial API of Vitkac
+									store
+									which
+									searches for
+									new products and sends Discords notifications
+								</div>
+							</div>
+						</a>
 					</div>
 				</div>
-			</a>
+
+			</div>
+		</div>
+		<!-- Projects section end -->
+		<div
+			class="xl:w-full xl:h-screen xl:mt-0 xl:pt-10 xl:px-20 flex-stretch mt-5 p-3 gap-3 bg-tea text-gunmetal md:px-10">
+			<div
+				class="text-2xl md:text-4xl underline decoration-2 decoration-dashed font-bold text-deep-pink mb-5 sm:decoration-2">
+				Experience
+			</div>
+
 		</div>
 	</div>
 </body>
