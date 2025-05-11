@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollToTop from "./scrolltop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="flex flex-col h-screen w-full max-w-2xl mx-auto">
+          {children}
+          <footer className="flex flex-row justify-center pb-5 w-full">KompocikDot @ {new Date().getFullYear()}</footer>
+        </div>
+        <ScrollToTop />
       </body>
     </html>
   );
