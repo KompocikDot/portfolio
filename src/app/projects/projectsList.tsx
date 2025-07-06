@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Docker, FastAPI, GHActions, Go, Nuxt, PostgreSQL, Python, VueJS, WASM } from "../icons";
+import { Docker, FastAPI, Go, Nuxt, PostgreSQL, Python, VueJS } from "../icons";
 
 type ProjectData = {
   name: string,
@@ -39,7 +39,7 @@ const data: ProjectData[] = [
     description: "Generator that takes amount of the points and generates diagram that can be exported to both image or bytearray that can be used on a webpage",
     technologies: [
       <Go key="go" />,
-      <WASM key="wasm" />,
+      //<WASM key="wasm" />,
     ],
     githubURL: "https://github.com/KompocikDot/voronoi-diagram",
     demoURL: undefined,

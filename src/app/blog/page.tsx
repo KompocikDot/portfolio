@@ -1,0 +1,55 @@
+import { glob } from "glob"
+import { basename } from "path";
+import Header from "../header";
+import Link from "next/link";
+
+export type PostMetadata = {
+  publicationDate: string;
+  title: string;
+  description: string;
+};
+
+export type Posts = {
+  [slug: string]: PostMetadata;
+};
+
+function PostLinks({ posts }: { posts: Posts }) {
+  return (
+    <ul className="m-5">
+      {Object.entries(posts).map(([slug, metadata]) => (
+        <li key={slug} className="border-solid border-3 border-aquamarine-700 p-5 rounded-lg">
+          <Link href={`/blog/${slug}`} className="hover:text-aquamarine-500">
+            <div className="flex flex-row justify-between">
+              <div>{metadata.title}</div>
+              <div>{metadata.publicationDate}</div>
+            </div>
+            <p className="">{metadata.description}</p>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default async function Posts() {
+  const postFilenames = await glob("*.mdx", { cwd: "./src/app/blog/content" });
+
+  const posts = Object.fromEntries(
+    await Promise.all(
+      postFilenames.map(async (f) => {
+        const { metadata } = await import(`@/content/${f}`);
+        return [basename(f, ".mdx"), metadata];
+      })
+    )
+  );
+
+  return (
+    <div>
+      <Header activePage="blog" />
+      <div>
+        <div className="m-5 text-4xl">Latest posts</div>
+        <PostLinks posts={posts} />
+      </div>
+    </div>
+  )
+}
