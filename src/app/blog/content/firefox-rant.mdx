@@ -17,38 +17,43 @@ it until... I found a new job and I moved from fousing mainly on backend stuff t
 
 I'm working on a project that I can't tell you about due to legal concerns, but it's using
 Svelte, Electron and Typescript on 'frontend' part of this app. Thanks to a fact that Electron is
-basically browser wrapper, our app could be designed as a website and directly imported to the electron with minimal changes. 
+basically browser wrapper, our app could be designed as a website and directly imported to the Electron with minimal changes. 
 
 ## Where problems begin
 
-During development I was told, that we're going to use one popular library that is emulating Terminal using Javascript. It was our internal fork, with minor tweaks, that don't break the code, mainly css styling was changed to meet company colour palette. I've used it, added tests and... It made most of the tests fail. Why you may ask, well at the beginning I could not wrap my head around, cause it was not occuring at every time and what's even more strange, it seemed that Chromium-based browsers were unaffected. 
+During the development I was told, that we're going to use one popular library that is emulating terminal using Javascript. It was our internal fork, with minor tweaks, that don't break the code - mainly css styling was changed to match company's colour palette. I've used it, added tests and... It made most of the tests fail. Why you may ask, well at the beginning I could not wrap my head around, cause it was not occuring at every time and what's even more strange, it seemed that Chromium-based browsers were unaffected. 
 
 ## It's time for debugging!
 
-First I made sure that this bug was reproducible, and it wasn't that hard - after removing
-all of my logic, it was possible to catch it between 80 and 90% of the time. Then I tried all different combinations, but when one was fixing Firefox (at least that's what I was thinking) in the same time it broke Chromium. After spending too much time and driking way too many energy drinks and coffee
-I've ended my day of work furious and curious (what a rhyme!). The next day I've tried to dive into codebase, but there's another problem - it's huge  - it consists of 30 to 40k LoC and it's docs provide bare minimum so I was left alone with the code. What made debugging even harder was use of different styles of code. Some parts were using promise.then, others awaited functions or used callback and some even used custom built event queue. Back then it was a nighmare for me - backend intern - that used JS/TS but mostly to reverse bot protections or add interactivity to a page.
+First, I made sure that this bug was reproducible, and it wasn't that hard - after removing
+all of my logic - it was possible to catch it between 80 and 90% of the time. Then I tried all different combinations, but when one was fixing Firefox (at least that's what I was thinking) in the same time it broke Chromium. After spending too much time and drinking way too many energy drinks and coffee
+I've ended my day of work furious and curious (what a rhyme!). The next day I've tried to dive into codebase, but there's another problem - it's huge  - it consists of 30 to 40k LoC and it's docs provide bare minimum, so I was left alone with the code. What made debugging even harder was use of different styles of code. Some parts were using `Promise.then`, others awaited functions or used callback and some even used custom built event queue. Back then it was a nighmare for me - backend intern - that used JS/TS but mostly to reverse bot protections or add interactivity to a page
 
 ## The issue is right there
 
-After two days I've looked into bug report section, but at the first glance I could not find any report that was even near what I was looking for. But suddenly, I've found one, though it was really old and it missed some info. It turned out that this: is a bug caused by firefox.
+After two days I've looked into bug report section, but at the first glance I could not find any report that was even near what I was looking for. But suddenly, I've found one, though it was really old and it missed some info. It turned out that this is a bug caused by firefox.
 
 ## They do not <s>give a damn</s> care
 
-This library is (or should I say was) developed by a giant company and yet they did not respond to any of the bug reports anymore. What's funnier there's a note explaining why they are doing some trickery to to fix issue caused by different firefox behaviour than all other browser engines that is directly tied to my issue. The bug description is as below: 
+This library is (or should I say was) developed by a giant company and yet they did not respond to any of the bug reports anymore. What's funnier there's a note explaining why they are doing some trickery to fix issue caused by firefox behaviour that is different from all other browser engines, that is directly tied to my issue. The bug description is as below: 
 [iframe.contentDocument is changed across loading even when it has no src or srcdoc](https://bugzilla.mozilla.org/show_bug.cgi?id=1493878)
 
-You're most likely now thinking, well that's library dev problem - well, no. It's different from other browsers and it's still **not** fixed after 7 freaking years! But yeah, firefox is famous for not giving a damn about bug - here are famous examples of it - these bugs can legally drink in Europe and US, and they are older than am I! [Tooltips bug](https://bugzilla.mozilla.org/show_bug.cgi?id=148624), [Textarea bug](https://bugzilla.mozilla.org/show_bug.cgi?id=33654)
+You're most likely now thinking, well that's library dev problem - well, no. It's different from other browsers and it's still **not** fixed after 7 freaking years! But yeah, firefox is famous for not giving a damn about bugs - here are famous examples of it:
+
+- [Tooltips bug](https://bugzilla.mozilla.org/show_bug.cgi?id=148624)
+- [Textarea bug](https://bugzilla.mozilla.org/show_bug.cgi?id=33654)
+
+These bugs can legally drink in Europe and the US, moreover they are older than am I!
 
 ## Why??
 
-I don't know what is Firefox doing with [Google's money](https://www.theverge.com/news/660548/firefox-google-search-revenue-share-doj-antitrust-remedies), but I'm pretty sure that this money is poorly spent on shit that no one wants and they light years behind Chromium and even Webkit aka Safari when it comes to features support. Need examples? Here are some:
+I don't know what is Firefox doing with [Google's money](https://www.theverge.com/news/660548/firefox-google-search-revenue-share-doj-antitrust-remedies), but I'm pretty sure that this money is poorly spent on shit that no one wants and they're light years behind Chromium and even Webkit aka Safari when it comes to features support. Need examples? Here are some:
 - [Parts of VirtualKeyboard API](https://developer.mozilla.org/en-US/docs/Web/API/VirtualKeyboard)
 - [Parts of Media Capture & Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API)
 - [Parts of Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
 
-And of course, there might be even better examples, but these are some off the top of my head. I fully understand that they are competing with two tech giants with most likely bigger budgets then Mozilla have, but I believe that better money spending whilte trying to keep up with competitors and proposing new stuff would make their browser more appealing to people, cause I feel like statistical user don't care about privacy as much as we, programmers/tech people do and in the end they would have bigger income, so is more money to improve browser and so.
+And of course, there might be even better examples, but these are some off the top of my head. I fully understand that they are competing with two tech giants with most likely bigger budgets than Mozilla have, but I believe that better money spending while trying to keep up with competitors and proposing new stuff would make their browser more appealing to people, cause I feel like statistical user don't care about privacy as much as we, programmers/tech people do and in the end they would have bigger income, so is more money to improve browser and so on.
 
 ## The end
 
-To sum up, I'm pissed with Firefox bugs, inconsistency but I'm still going to use it and develop software with it in mind, mostly because my boss wants to ;) Thanks for reading, hope to hear comments about my short rant and what do **you** think about it.
+To sum up, I'm pissed with Firefox bugs and it's inconsistency, but I'm still going to use it and develop software with it in mind, mostly because my boss wants to ;) Thanks for reading, hope to hear comments about my short rant and what do **you** think about it.
