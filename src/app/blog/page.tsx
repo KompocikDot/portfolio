@@ -7,6 +7,7 @@ export type PostMetadata = {
   publicationDate: string;
   title: string;
   description: string;
+  readTime: string;
 };
 
 export type Posts = {
@@ -23,7 +24,10 @@ function PostLinks({ posts }: { posts: Posts }) {
               <div>{metadata.title}</div>
               <div>{metadata.publicationDate}</div>
             </div>
-            <p className="">{metadata.description}</p>
+            <div className="flex flex-row justify-between">
+              <p>{metadata.description}</p>
+              <div>{metadata.readTime}</div>
+            </div>
           </Link>
         </li>
       ))}
