@@ -1,6 +1,8 @@
 @import "tailwindcss";
-@plugin "tailwind-plugin-typed";
 @plugin "@tailwindcss/typography";
+@plugin "tailwind-plugin-typed" {
+  delimiter: '~';
+}
 
 :root {
   --background: #18181B;

@@ -51,7 +51,7 @@ export default async function Posts() {
     <div>
       <Header activePage="blog" />
       <div>
-        <div className="m-5 text-4xl">Latest posts</div>
+        <div className="m-5 text-4xl typed typed-caret typed-caret-color-aquamarine-500 typed-caret-width-5">Latest posts</div>
         <PostLinks posts={posts} />
       </div>
     </div>
