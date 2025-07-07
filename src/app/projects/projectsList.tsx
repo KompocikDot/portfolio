@@ -69,6 +69,6 @@ function Project(props: ProjectData): JSX.Element {
     <div className="text-2xl text-aquamarine-500">{props.name}</div>
     <div>{props.description}</div>
     <div className="flex w-full justify-around gap-3 h-8 my-5">{props.technologies}</div>
-    {props.githubURL && <Link href={props.githubURL}>Github</Link>}
+    {props.githubURL && <Link className="hover:text-aquamarine-500" href={props.githubURL}>Github</Link>}
   </div >;
 }
