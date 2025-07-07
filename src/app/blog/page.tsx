@@ -1,7 +1,7 @@
-import { glob } from "glob"
-import { basename } from "path";
 import Header from "../header";
 import Link from "next/link";
+import { promises as fs } from "fs";
+import path from "path";
 
 export type PostMetadata = {
   publicationDate: string;
@@ -17,14 +17,14 @@ export type Posts = {
 function PostLinks({ posts }: { posts: Posts }) {
   return (
     <ul className="my-10">
-      {Object.entries(posts).map(([slug, metadata]) => (
-        <li key={slug} className="border-solid border-3 border-aquamarine-700 p-5 rounded-lg">
+      {Object.entries(posts).map(([slug, metadata]: [string, PostMetadata]) => (
+        <li key={slug} className="border-solid border-3 border-aquamarine-700 p-5 rounded-lg my-4">
           <Link href={`/blog/${slug}`} className="hover:text-aquamarine-500">
             <div className="flex flex-row justify-between">
               <div>{metadata.title}</div>
               <div>{metadata.publicationDate}</div>
             </div>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between mt-2">
               <p>{metadata.description}</p>
               <div>{metadata.readTime}</div>
             </div>
@@ -36,13 +36,15 @@ function PostLinks({ posts }: { posts: Posts }) {
 }
 
 export default async function Posts() {
-  const postFilenames = await glob("*.mdx", { cwd: "./src/app/blog/content" });
+  const contentDirectory = path.join(process.cwd(), "src/app/blog/content");
+  const postFilenames = await fs.readdir(contentDirectory);
 
   const posts = Object.fromEntries(
     await Promise.all(
       postFilenames.map(async (f) => {
-        const { metadata } = await import(`@/content/${f}`);
-        return [basename(f, ".mdx"), metadata];
+        const slug = path.basename(f, ".mdx");
+        const { metadata } = await import(`./content/${f}`);
+        return [slug, metadata];
       })
     )
   );
