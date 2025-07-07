@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { Docker, FastAPI, Go, Nuxt, PostgreSQL, Python, VueJS } from "../icons";
+import Link from "next/link";
 
 type ProjectData = {
   name: string,
@@ -36,7 +37,7 @@ const data: ProjectData[] = [
   },
   {
     name: "Voronoi diagram generator",
-    description: "Generator that takes amount of the points and generates diagram that can be exported to both image or bytearray that can be used on a webpage",
+    description: "Generator that takes amount of the points and generates diagram that can be exported to an image",
     technologies: [
       <Go key="go" />,
       //<WASM key="wasm" />,
@@ -68,6 +69,6 @@ function Project(props: ProjectData): JSX.Element {
     <div className="text-2xl text-aquamarine-500">{props.name}</div>
     <div>{props.description}</div>
     <div className="flex w-full justify-around gap-3 h-8 my-5">{props.technologies}</div>
-    <div>{props.githubURL}</div>
+    {props.githubURL && <Link href={props.githubURL}>Github</Link>}
   </div >;
 }
