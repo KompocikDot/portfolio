@@ -8,7 +8,7 @@ export default function Contact() {
       <h1 className="text-4xl typed-caret typed-caret-color-aquamarine-500 typed-caret-width-5">
         Contact
       </h1>
-      <h2>You can reach using these platforms</h2>
+      <h2>You can reach me using these platforms</h2>
       <ul className="my-10 ">
         <li className="hover:text-aquamarine-500"><Link href="https://www.linkedin.com/in/kacper-soczko/">LinkedIn - https://www.linkedin.com/in/kacper-soczko/</Link></li>
         <li className="hover:text-aquamarine-500"><Link href="https://github.com/KompocikDot">Github - https://github.com/KompocikDot</Link></li>
