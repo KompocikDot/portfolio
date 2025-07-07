@@ -1,4 +1,4 @@
-import Header from "@/app/header"
+import Header from "@/app/components/header"
 
 export default async function Page({
   params,

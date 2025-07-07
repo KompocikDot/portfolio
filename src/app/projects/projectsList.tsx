@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Docker, FastAPI, Go, Nuxt, PostgreSQL, Python, VueJS } from "../icons";
+import { Docker, FastAPI, Go, Nuxt, PostgreSQL, Python, VueJS } from "@/app/components/icons";
 import Link from "next/link";
 
 type ProjectData = {

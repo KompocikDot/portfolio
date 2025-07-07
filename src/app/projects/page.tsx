@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../header";
+import Header from "@/app/components/header";
 import ProjectsList from "./projectsList";
 
 export default function Projects() {

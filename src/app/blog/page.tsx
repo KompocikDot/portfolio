@@ -1,4 +1,4 @@
-import Header from "../header";
+import Header from "@/app/components/header";
 import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";

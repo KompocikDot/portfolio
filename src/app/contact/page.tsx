@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../header";
+import Header from "@/app/components/header";
 
 export default function Contact() {
   return (<>
