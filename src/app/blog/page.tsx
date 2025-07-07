@@ -16,7 +16,7 @@ export type Posts = {
 
 function PostLinks({ posts }: { posts: Posts }) {
   return (
-    <ul className="m-5">
+    <ul className="my-10">
       {Object.entries(posts).map(([slug, metadata]) => (
         <li key={slug} className="border-solid border-3 border-aquamarine-700 p-5 rounded-lg">
           <Link href={`/blog/${slug}`} className="hover:text-aquamarine-500">
@@ -48,12 +48,14 @@ export default async function Posts() {
   );
 
   return (
-    <div>
+    <>
       <Header activePage="blog" />
-      <div>
-        <div className="m-5 text-4xl typed typed-caret typed-caret-color-aquamarine-500 typed-caret-width-5">Latest posts</div>
+      <main className="flex flex-col grow mx-5 mt-10">
+        <h1 className="text-4xl typed-caret typed-caret-color-aquamarine-500 typed-caret-width-5">
+          Latest posts
+        </h1>
         <PostLinks posts={posts} />
-      </div>
-    </div>
+      </main>
+    </>
   )
 }
