@@ -1,9 +1,15 @@
 import { JSX } from "react"
 import { Python, Go, Typescript, Svelte, CSS, Gitlab, Django, AWS } from "./icons"
+import { Tooltip } from "./tooltip"
+
+type Technology = {
+  name: string,
+  svg: JSX.Element,
+}
 
 type ExperienceItemProps = {
   companyName: string,
-  technologies: JSX.Element[],
+  technologies: Technology[],
   description: string,
   startedAt: string,
   finishedAt?: string,
@@ -13,12 +19,12 @@ const data: ExperienceItemProps[] = [
   {
     companyName: "Antmicro",
     technologies: [
-      <Go key="go" />,
-      <Python key="python" />,
-      <Typescript key="typescript" />,
-      <Svelte key="svelte" />,
-      <CSS key="css" />,
-      <Gitlab key="gitlab" />,
+      { name: "Go", svg: <Go key="go" /> },
+      { name: "Python", svg: <Python key="python" /> },
+      { name: "Typescript", svg: <Typescript key="typescript" /> },
+      { name: "Svelte", svg: <Svelte key="svelte" /> },
+      { name: "CSS", svg: <CSS key="css" /> },
+      { name: "Gitlab", svg: <Gitlab key="gitlab" /> },
     ],
     description: "As a backend intern, I'm developing internal company tools in Go, Python, and TypeScript with the possibility of them being open-sourced. ",
     startedAt: new Intl.DateTimeFormat("en", { year: 'numeric', month: "long" }).format(new Date(2024, 7, 1)),
@@ -27,9 +33,9 @@ const data: ExperienceItemProps[] = [
   {
     companyName: "Bluerider.Software",
     technologies: [
-      <Python key="python" />,
-      <Django key="django" />,
-      <AWS key="aws" />,
+      { name: "Python", svg: <Python key="python" /> },
+      { name: "Django", svg: <Django key="django" /> },
+      { name: "AWS", svg: <AWS key="aws" /> },
     ],
     description: "As Python backend intern I was responsible for developing backend in Django(DRF), testing and documenting it as well as integrating our product with AWS services such as SES and SNS",
     startedAt: new Intl.DateTimeFormat("en", { year: 'numeric', month: "long" }).format(new Date(2022, 7, 1)),
@@ -50,7 +56,9 @@ function ExperienceItem(props: ExperienceItemProps): JSX.Element {
   return <div className="border-3 border-aquamarine-700 p-5 rounded-lg flex flex-col">
     <div className="text-2xl text-aquamarine-500">{props.companyName}</div>
     <div>{props.description}</div>
-    <div className="flex w-full justify-around gap-3 h-8 my-5">{props.technologies}</div>
+    <div className="flex w-full justify-around gap-3 h-8 my-5">
+      {props.technologies.map((tech, index) => <Tooltip key={index} svg={tech.svg} text={tech.name} />)}
+    </div>
     <div>{props.startedAt} - {props.finishedAt ?? 'now'}</div>
   </div>
 }
