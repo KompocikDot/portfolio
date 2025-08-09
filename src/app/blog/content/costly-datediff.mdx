@@ -1,0 +1,47 @@
+export const metadata = {
+  publicationDate: "09-08-2025",
+  title: "Datediff that may cost you a lot",
+  description: "Quirks in the Python's datediff class",
+  readTime: "2 mins",
+}
+
+# Datediff that may cost you a lot
+
+Recently I've been working on a piece of a service that polls other internal service for client's usage on some services that my company provides. Returned data was processed, converted and pushed to the database to retrieve it later on. Next, on frontend call, backend service retrieved data that was related to a certain client and calculated time that was required to complete tasks, so total usage and price for service could be displayed to the end user.
+
+## Here comes a bug
+
+Look at this chunk of code
+
+```py
+@dataclass
+class Usage:
+    start_time: datetime
+    finish_time: datetime
+
+    @property
+    def usage_in_seconds(self) -> int:
+        return (self.finish_time - self.start_time).seconds
+```
+
+Can you spot, what's wrong? Look for it for about 10 seconds. Well... If not, let me explain it to you.
+
+Let's assume that there are two datetimes, that have identical time parts, but they have one day difference, then you would expect, that returned value will be 60(seconds in minute) * 60(minutes in hour) * 24(hours in a day) = 86400 seconds. But that's what python will return to you:
+
+```py
+>>> from datetime import datetime
+>>> date_a = datetime(2025, 8, 9, 12, 0, 1)
+>>> date_b = datetime(2025, 8, 10, 12, 0, 1)
+>>> (date_b - date_a).seconds
+0
+```
+
+See? This could've cost you a **lot** of stress, money or even a job!
+
+## Solution
+
+It's rather simple, first [**read the docs**](https://docs.python.org/3/library/datetime.html#datetime.timedelta.seconds) and secondly, use `.total_seconds()`. Though, you have to know, that it returns float instead of int, so either use `math.ceil` or `math.floor` to get right value, depending on your usecase.
+
+## The end
+
+Fortunately, I've catched that bug early, in the beta environment, so no one was hurt (or fired). So, that's another Python thingy you have to learn yourself. That's it, thanks for rather short reading :)

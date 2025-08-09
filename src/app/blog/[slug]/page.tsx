@@ -19,7 +19,10 @@ export default async function Page({
 }
 
 export function generateStaticParams() {
-  return [{ slug: 'firefox-rant' }]
+  return [
+    { slug: 'firefox-rant' },
+    { slug: 'costly-datediff' },
+  ];
 }
 
 export const dynamicParams = false
