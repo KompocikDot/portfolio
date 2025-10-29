@@ -21,7 +21,7 @@ const data: ExperienceItemProps[] = [
 		technologies: [
 			{ name: "Python", svg: <Python key="python" /> },
 		],
-		description: "As a Site Reliablity engineer I'm in charge of making new tools that help other developers across multiple teams",
+		description: "As a Site Reliablity Engineer I'm in charge of making new tools that help other developers across multiple teams",
 		startedAt: new Intl.DateTimeFormat("en", { year: 'numeric', month: "long" }).format(new Date(2025, 10, 1)),
 		finishedAt: undefined
 	},
