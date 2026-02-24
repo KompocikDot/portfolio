@@ -1,14 +1,12 @@
-import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
-import rehypePrettyCode from "rehype-pretty-code";
-import remarkGfm from "remark-gfm";
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  poweredByHeader: false,
   experimental: {
     mdxRs: false,
   },
-  poweredByHeader: false,
   env: {
     NEXT_TELEMETRY_DISABLED: "1",
   },
@@ -16,9 +14,9 @@ const nextConfig: NextConfig = {
 
 const withMdx = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, {theme: 'ayu-dark'}]],
-  }
-})
+    remarkPlugins: ["remark-gfm"],
+    rehypePlugins: [["rehype-pretty-code", { theme: "ayu-dark" }]],
+  },
+});
 
 export default withMdx(nextConfig);
